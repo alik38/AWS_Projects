@@ -15,7 +15,7 @@ Resources:
         - Key: Name 
           Value: !Sub Web Server of ${AWS::StackName} Stack
       UserData:
-        Fn::Base64: |
+        !Base64 |
           #! /bin/bash
           yum update -y
           yum install httpd -y
@@ -43,6 +43,7 @@ Resources:
           FromPort: 80
           ToPort: 80
           CidrIp: 0.0.0.0/0  
+
 Outputs:
   WebsiteURL:
     Description: Kittens Carousel Application URL
